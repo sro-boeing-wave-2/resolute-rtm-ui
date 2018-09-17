@@ -26,6 +26,7 @@ export class MessageTextComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log("Recieved message into message box: " + JSON.stringify(this.message));
   }
 
 }

@@ -121,6 +121,46 @@
           }
         }
       }
+    },
+    "resolute-chat": {
+      "root": "projects/resolute-chat",
+      "sourceRoot": "projects/resolute-chat/src",
+      "projectType": "library",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/resolute-chat/tsconfig.lib.json",
+            "project": "projects/resolute-chat/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "project": "projects/resolute-chat/ng-package.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/resolute-chat/src/test.ts",
+            "tsConfig": "projects/resolute-chat/tsconfig.spec.json",
+            "karmaConfig": "projects/resolute-chat/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/resolute-chat/tsconfig.lib.json",
+              "projects/resolute-chat/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "rtm-chat"

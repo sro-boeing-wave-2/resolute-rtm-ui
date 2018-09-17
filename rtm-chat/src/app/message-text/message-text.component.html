@@ -1,9 +1,12 @@
-<mat-card class="message-box-send" *ngIf="_connectionId == message.from.connectionid">
-  <div mat-card-avatar class="user-avatar-div-recieve">
+<mat-card class="message-box-send" *ngIf="_connectionId == message.to.clientemail">
+  <div mat-card-avatar class="user-avatar-div-recieve" *ngIf="message.to.clientimageurl != null">
     <mat-icon svgIcon="send" style="fill: whitesmoke; background: tomato"></mat-icon>
   </div>
-  <div style="float: right; width: 80%">
-    <mat-card-title class="user-name">{{message.from.clientname}}</mat-card-title>
+  <div mat-card-avatar class="user-avatar-div-recieve" *ngIf="message.to.clientimageurl == null">
+    <avatar [name]="message.to.clientname" [displayType]="'circle'"></avatar>
+  </div>
+  <div style="float: right; width: 60%">
+    <mat-card-title class="user-name">{{message.to.clientname}}</mat-card-title>
     <mat-card-content>
       <p class="message">
         {{message.text}}
@@ -11,18 +14,18 @@
     </mat-card-content>
   </div>
 </mat-card>
-<mat-card class="message-box-recieve" align="right" *ngIf="_clientId != from.ConnectionId">
-  <div mat-card-avatar class="user-avatar-div-recieve" *ngIf="message.from.clientimageurl != ''">
+<mat-card class="message-box-recieve" align="right" *ngIf="_connectionId != message.to.clientemail">
+  <div mat-card-avatar class="user-avatar-div-recieve" *ngIf="message.to.clientimageurl != null">
     <mat-icon svgIcon="send" style="fill: whitesmoke; background: tomato"></mat-icon>
   </div>
-  <div mat-card-avatar class="user-avatar-div-recieve" *ngIf="message.from.clientimageurl == ''">
+  <div mat-card-avatar class="user-avatar-div-recieve" *ngIf="message.to.clientimageurl == null">
     <avatar [name]="message.from.clientname" [displayType]="'circle'"></avatar>
   </div>
-  <div style="float: right; width: 80%">
-    <mat-card-title class="user-name">{{_from.clientName}}</mat-card-title>
+  <div style="float: right; width: 60%">
+    <mat-card-title class="user-name">{{message.to.clientname}}</mat-card-title>
     <mat-card-content>
       <p class="message">
-        {{_text}}
+        {{message.text}}
       </p>
     </mat-card-content>
   </div>

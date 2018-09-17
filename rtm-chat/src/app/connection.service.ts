@@ -8,18 +8,21 @@ import { Injectable } from '@angular/core';
 })
 export class ConnectionService {
 
-  private _connectionId;
+  private _clientEmail = 'niki@gmail.com';
   private _connection;
   private _conversation = [];
   private _conversationSubject = new Subject<Message[]>();
 
   constructor() {
     this._connection = new HubConnectionBuilder()
-      .withUrl("http://172.23.238.239:1234/ChatHub")
+      .withUrl("http://localhost:8084/ChatHub")
       .build();
     this._connection.start()
     .then(_ => {
-      this._connection.invoke('Config', 'niki@gmail.com', 'user', 'Login not working.');
+      console.log("Connection: " + JSON.stringify(this._connection))
+      this._connection.invoke('Config', this._clientEmail, 'user', 'Login not working').then(result => {
+        console.log("Config Result: " + result);
+      });
     });
     this._connection.on('ReceiveMessage', data => {
       console.log("Received message: " + data);
@@ -37,6 +40,6 @@ export class ConnectionService {
   }
 
   public getConnectionId(): string {
-    return this._connectionId;
+    return this._clientEmail;
   }
 }
