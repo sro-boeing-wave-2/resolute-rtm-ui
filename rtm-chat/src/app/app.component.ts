@@ -1,6 +1,7 @@
 import { Message } from './message';
 import { ConnectionService } from './connection.service';
-import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit, Output, Input } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -13,10 +14,19 @@ export class AppComponent implements OnInit {
   public _connectionId = "";
   public name = "Sankalp Johri";
   public color = "#000a12";
+  @Input() @Output() public email = "";
+  public type = "user";
+  @Input() @Output() public query = "";
 
-  constructor(private _connectionService: ConnectionService) {
-    this._connectionId = this._connectionService.getConnectionId();
-    console.log("ConnectionId: " + this._connectionId);
+  constructor(private _connectionService: ConnectionService, private activatedRoute: ActivatedRoute) {
+    console.log("Type: " + this.type);
+    this.activatedRoute.queryParams.subscribe(params => {
+      this._connectionId = params['ticketId'];
+      this.type = params['type'] != null ? params['type'] : "user";
+      if (this._connectionId != null && this.type != null && this.type == "agent") {
+        this.configChatAgent(this.email, this._connectionId);
+      }
+    });
   }
 
   ngOnInit() {
@@ -25,5 +35,13 @@ export class AppComponent implements OnInit {
       console.log("Conversation: " + JSON.stringify(conversation));
       this._conversation = conversation;
     });
+  }
+
+  private configChatAgent(_connectionId: String) {
+
+    this._connectionService.config(this._connectionId);
+    console.log("ConnectionId: " + this._connectionId); // Print the parameter to the console.
+    console.log("Type: " + this.type);
+    console.log("Email: " + this.email);
   }
 }

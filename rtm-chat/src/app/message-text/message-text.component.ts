@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { MatIconRegistry } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
-import { UserInfo } from '../user-info';
 import { Message } from '../message';
 import { ConnectionService } from '../connection.service';
 

@@ -15,20 +15,30 @@ export class ConnectionService {
 
   constructor() {
     this._connection = new HubConnectionBuilder()
-      .withUrl("http://localhost:8084/ChatHub")
+      .withUrl("http://172.23.239.55:5000/ChatHub")
       .build();
-    this._connection.start()
-    .then(_ => {
-      console.log("Connection: " + JSON.stringify(this._connection))
-      this._connection.invoke('Config', this._clientEmail, 'user', 'Login not working').then(result => {
-        console.log("Config Result: " + result);
-      });
-    });
+    this._connection.start().then(_ => {
+      console.log("Connection Established");
+    })
     this._connection.on('ReceiveMessage', data => {
       console.log("Received message: " + data);
       this._conversation.push(data as Message);
       this._conversationSubject.next(this._conversation);
     });
+  }
+
+  public config(query: String) {
+    this._connection.start()
+      .then(_ => {
+        console.log("Connection: " + JSON.stringify(this._connection))
+        this._connection.invoke('Config', query).then(result => {
+          console.log("Config Result: " + result);
+        });
+      });
+  }
+
+  public connectToAgent(email: String, query: String) {
+    this._connection.invoke('AllocateMeAnAgent', email, query);
   }
 
   public sendMessage(message: string) {

@@ -24,6 +24,7 @@ export class MessageBoxComponent implements OnInit {
   public sendMessage() {
     console.log("Sending message: " + this._text );
     this._connection.sendMessage(this._text);
+    this._text = "";
   }
 
 }
