@@ -14,6 +14,9 @@ export class InfoFormComponent implements OnInit {
   constructor(private connectionService: ConnectionService) { }
 
   ngOnInit() {
+    this.connectionService.startConnection().then(_ => {
+      console.log("Connection Established");
+    })
   }
 
   public submitDetails() {
