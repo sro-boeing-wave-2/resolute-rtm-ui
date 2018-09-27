@@ -14,15 +14,15 @@ export class InfoFormComponent implements OnInit {
   constructor(private connectionService: ConnectionService) { }
 
   ngOnInit() {
-    this.connectionService.startConnection().then(_ => {
-      console.log("Connection Established");
-    })
   }
 
   public submitDetails() {
     console.log("Email: " + this.email);
     console.log("Query: " + this.query);
-    this.connectionService.connectToAgent(this.email, this.query);
+    this.connectionService.startConnection().then(_ => {
+      console.log("Connection Established");
+      this.connectionService.connectToAgent(this.email, this.query);
+    });
   }
 
 }

@@ -14,12 +14,15 @@ export class AppComponent implements OnInit {
   public _connectionId = "";
   public name = "Sankalp Johri";
   public color = "#000a12";
+  public static num = 0;
+
   @Input() @Output() public email = "";
   public type;
   @Input() @Output() public query = "";
 
   constructor(private _connectionService: ConnectionService, private activatedRoute: ActivatedRoute) {
-    console.log("Type: " + this.type);
+    AppComponent.num++;
+    console.log("Invocation count: " + AppComponent.num);
     this.activatedRoute.queryParams.subscribe(params => {
       this._connectionId = params['ticketId'];
       this.type = params['type'] != null ? params['type'] : "user";

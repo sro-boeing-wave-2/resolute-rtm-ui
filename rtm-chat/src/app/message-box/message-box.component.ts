@@ -2,6 +2,7 @@ import { ConnectionService } from '../connection.service';
 import { Component, OnInit } from '@angular/core';
 import { MatIconRegistry } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
+import { Message } from '../message';
 
 @Component({
   selector: 'app-message-box',
@@ -23,7 +24,12 @@ export class MessageBoxComponent implements OnInit {
 
   public sendMessage() {
     console.log("Sending message: " + this._text );
-    this._connection.sendMessage(this._text);
+    let message = new Message();
+    message.MessageText = this._text;
+    message.EmailId = this._connection.getClientEmail();
+    message.Name = this._connection.getClientName();
+    message.Timestamp = new Date();
+    this._connection.sendMessage(message);
     this._text = "";
   }
 

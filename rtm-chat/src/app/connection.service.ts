@@ -8,7 +8,8 @@ import { Injectable } from '@angular/core';
 })
 export class ConnectionService {
 
-  private _clientEmail = 'niki@gmail.com';
+  private _clientEmail = "";
+  private _clientName = "";
   private _connection;
   private _conversation = [];
   private _conversationSubject = new Subject<Message[]>();
@@ -34,11 +35,29 @@ export class ConnectionService {
     });
   }
 
+  public setUserDetails(email: string) {
+    this._clientEmail = email;
+    this._clientName = email.split("@")[0];
+  }
+
+  public setAgentDetails(email: string, name: string) {
+    this._clientEmail = email;
+    this._clientName = name;
+  }
+
+  public getClientName() {
+    return this._clientName;
+  }
+
+  public getClientEmail() {
+    return this._clientEmail;
+  }
+
   public connectToAgent(email: String, query: String) {
     this._connection.invoke('AllocateMeAnAgent', email, query);
   }
 
-  public sendMessage(message: string) {
+  public sendMessage(message: Message) {
     this._connection.invoke('SendMessage', message);
   }
 
