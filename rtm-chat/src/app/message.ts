@@ -1,16 +1,15 @@
-import { UserInfo } from "./user-info";
 
 export class Message {
 
-  to: UserInfo;
-  from: UserInfo;
-  text: string;
-  timestamp: Date;
+  public name: string;
+  public emailId: string;
+  public messageText: string;
+  public timestamp: Date;
 
   Message() {
-    this.to = null;
-    this.from = null;
-    this.text = "";
+    this.name = "";
+    this.emailId = "";
+    this.messageText = "";
     this.timestamp = null;
   }
 }

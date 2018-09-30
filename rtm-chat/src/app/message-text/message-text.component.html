@@ -1,28 +1,25 @@
-<mat-card class="message-box-send" *ngIf="_connectionId == message.from.connectionid">
+<mat-card class="message-box-send" *ngIf="_connectionId == message.emailId">
   <div mat-card-avatar class="user-avatar-div-recieve">
-    <mat-icon svgIcon="send" style="fill: whitesmoke; background: tomato"></mat-icon>
+    <avatar [name]="message.name" [displayType]="'circle'"></avatar>
   </div>
-  <div style="float: right; width: 80%">
-    <mat-card-title class="user-name">{{message.from.clientname}}</mat-card-title>
+  <div style="float: right; width: 60%">
+    <mat-card-title class="user-name">{{message.name}}</mat-card-title>
     <mat-card-content>
       <p class="message">
-        {{message.text}}
+        {{message.messageText}}
       </p>
     </mat-card-content>
   </div>
 </mat-card>
-<mat-card class="message-box-recieve" align="right" *ngIf="_clientId != from.ConnectionId">
-  <div mat-card-avatar class="user-avatar-div-recieve" *ngIf="message.from.clientimageurl != ''">
-    <mat-icon svgIcon="send" style="fill: whitesmoke; background: tomato"></mat-icon>
+<mat-card class="message-box-recieve" align="right" *ngIf="_connectionId != message.emailId">
+  <div mat-card-avatar class="user-avatar-div-recieve">
+    <avatar [name]="message.name" [displayType]="'circle'"></avatar>
   </div>
-  <div mat-card-avatar class="user-avatar-div-recieve" *ngIf="message.from.clientimageurl == ''">
-    <avatar [name]="message.from.clientname" [displayType]="'circle'"></avatar>
-  </div>
-  <div style="float: right; width: 80%">
-    <mat-card-title class="user-name">{{_from.clientName}}</mat-card-title>
+  <div style="float: right; width: 60%">
+    <mat-card-title class="user-name">{{message.name}}</mat-card-title>
     <mat-card-content>
       <p class="message">
-        {{_text}}
+        {{message.messageText}}
       </p>
     </mat-card-content>
   </div>

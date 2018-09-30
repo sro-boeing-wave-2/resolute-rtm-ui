@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { MatIconRegistry } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
-import { UserInfo } from '../user-info';
 import { Message } from '../message';
 import { ConnectionService } from '../connection.service';
 
@@ -23,9 +22,12 @@ export class MessageTextComponent implements OnInit {
     iconRegistry.addSvgIcon(
       'send',
       sanitizer.bypassSecurityTrustResourceUrl('assets/icon-send.svg'));
+      this._connectionId = _connection.getClientEmail();
   }
 
   ngOnInit() {
+    console.log("My Email: " + this._connectionId);
+    console.log("Recieved message into message box: " + JSON.stringify(this.message));
   }
 
 }

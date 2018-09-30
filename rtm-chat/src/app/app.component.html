@@ -1,6 +1,7 @@
 <div class="chat-window">
+  <app-info-form *ngIf="type != null && type == 'user'"></app-info-form>
   <div *ngFor="let message of _conversation">
-    <app-message-text [message]="message" [_connectionId]="_connectionId"></app-message-text>
+    <app-message-text [message]="message" [_connectionId]="email"></app-message-text>
   </div>
-  <app-message-box></app-message-box>
 </div>
+<app-message-box></app-message-box>

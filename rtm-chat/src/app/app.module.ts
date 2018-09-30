@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { MessageBoxComponent } from './message-box/message-box.component';
 import { InfoFormComponent } from './info-form/info-form.component';
 import { MessageTextComponent } from './message-text/message-text.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { MessageTextComponent } from './message-text/message-text.component';
     MatButtonModule,
     MatChipsModule,
     MatCardModule,
-    AvatarModule.forRoot()
+    AvatarModule.forRoot(),
+    RouterModule.forRoot([])
   ],
   providers: [],
   bootstrap: [AppComponent]

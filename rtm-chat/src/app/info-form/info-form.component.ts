@@ -1,3 +1,4 @@
+import { ConnectionService } from '../connection.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InfoFormComponent implements OnInit {
 
-  constructor() { }
+  public email = "";
+  public query = "";
+
+  constructor(private connectionService: ConnectionService) { }
 
   ngOnInit() {
+  }
+
+  public submitDetails() {
+    console.log("Email: " + this.email);
+    console.log("Query: " + this.query);
+    this.connectionService.setUserDetails(this.email);
+    this.connectionService.startConnection().then(_ => {
+      console.log("Connection Established");
+      this.connectionService.connectToAgent(this.email, this.query);
+    });
   }
 
 }
