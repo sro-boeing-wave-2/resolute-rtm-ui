@@ -22,9 +22,11 @@ export class MessageTextComponent implements OnInit {
     iconRegistry.addSvgIcon(
       'send',
       sanitizer.bypassSecurityTrustResourceUrl('assets/icon-send.svg'));
+      this._connectionId = _connection.getClientEmail();
   }
 
   ngOnInit() {
+    console.log("My Email: " + this._connectionId);
     console.log("Recieved message into message box: " + JSON.stringify(this.message));
   }
 

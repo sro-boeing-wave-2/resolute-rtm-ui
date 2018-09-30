@@ -25,10 +25,10 @@ export class MessageBoxComponent implements OnInit {
   public sendMessage() {
     console.log("Sending message: " + this._text );
     let message = new Message();
-    message.MessageText = this._text;
-    message.EmailId = this._connection.getClientEmail();
-    message.Name = this._connection.getClientName();
-    message.Timestamp = new Date();
+    message.messageText = this._text;
+    message.emailId = this._connection.getClientEmail();
+    message.name = this._connection.getClientName();
+    message.timestamp = new Date();
     this._connection.sendMessage(message);
     this._text = "";
   }

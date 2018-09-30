@@ -16,9 +16,9 @@ export class AppComponent implements OnInit {
   public color = "#000a12";
   public static num = 0;
 
-  @Input() @Output() public email = "";
+  public email = "";
   public type;
-  @Input() @Output() public query = "";
+  public query = "";
 
   constructor(private _connectionService: ConnectionService, private activatedRoute: ActivatedRoute) {
     AppComponent.num++;
@@ -26,6 +26,11 @@ export class AppComponent implements OnInit {
     this.activatedRoute.queryParams.subscribe(params => {
       this._connectionId = params['ticketId'];
       this.type = params['type'] != null ? params['type'] : "user";
+      this.email = params['email'] != null ? params['email'] : _connectionService.getClientEmail();
+      this.name = params['name'] != null ? params['name'] : _connectionService.getClientName();
+      if (this.email != null && this.email != "" && this.name != null && this.name != "") {
+        this._connectionService.setAgentDetails(this.email, this.name);
+      }
       if (this._connectionId != null && this.type == "agent") {
         this._connectionService.startConnection().then(_ => {
           this.configChatAgent(this._connectionId);

@@ -16,9 +16,9 @@ export class ConnectionService {
 
   constructor() {
     this._connection = new HubConnectionBuilder()
-      .withUrl("http://172.23.239.83:5000/ChatHub")
+      .withUrl("http://172.23.238.239:5000/ChatHub")
       .build();
-    this._connection.on('ReceiveMessage', data => {
+    this._connection.on('message', data => {
       console.log("Received message: " + data);
       this._conversation.push(data as Message);
       this._conversationSubject.next(this._conversation);
@@ -59,6 +59,8 @@ export class ConnectionService {
 
   public sendMessage(message: Message) {
     this._connection.invoke('SendMessage', message);
+    this._conversation.push(message);
+    this._conversationSubject.next(this._conversation);
   }
 
   public getConversation(): Observable<Message[]> {
