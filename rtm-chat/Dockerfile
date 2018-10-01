@@ -1,8 +1,13 @@
-FROM node:latest
+FROM node:alpine
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
-COPY package.json /usr/src/app
+COPY package.json .
+RUN pwd
+RUN ls /usr/src/app/
 RUN npm install
-COPY . /usr/src/app
+RUN npm install -g @angular/cli
+COPY . .
+RUN ls /usr/src/app
+RUN cat package.json
 EXPOSE 4200
-CMD ["npm", "start"]
+ENTRYPOINT ["npm", "start"]
