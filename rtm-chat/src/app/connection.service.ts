@@ -16,7 +16,7 @@ export class ConnectionService {
 
   constructor() {
     this._connection = new HubConnectionBuilder()
-      .withUrl("http://13.126.8.255/chathub")
+      .withUrl("http://13.126.8.255/rtm/ChatHub")
       .build();
     this._connection.on('message', data => {
       console.log("Received message: " + data);
