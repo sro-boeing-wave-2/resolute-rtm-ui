@@ -7,7 +7,4 @@ services:
      - "SERVICE_4200_NAME=chat-ui"
      - "SERVICE_TAG=chat-ui-tag"
    container_name: resolute-chat-ui
-   volumes:
-           - '.:/usr/src/app'
-           - '/usr/src/app/node_modules'
 
