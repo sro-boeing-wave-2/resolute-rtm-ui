@@ -1,3 +1,4 @@
+import { ConnectionService } from '../connection.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FeedbackComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _connectionService: ConnectionService) { }
 
   ngOnInit() {
+  }
+
+  public submitPositiveFeedback() {
+    this._connectionService.setFeedback(5);
+  }
+
+  public submitNegativeFeedback() {
+    this._connectionService.setFeedback(1);
   }
 
 }

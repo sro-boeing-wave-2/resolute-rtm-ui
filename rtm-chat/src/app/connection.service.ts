@@ -23,6 +23,12 @@ export class ConnectionService {
       this._conversation.push(data as Message);
       this._conversationSubject.next(this._conversation);
     });
+    this._connection.on('GetFeedback', data => {
+      var feedbackMessage: Message = new Message();
+      feedbackMessage.emailId = "feedbackBot";
+      this._conversation.push(feedbackMessage);
+      this._conversationSubject.next(this._conversation);
+    });
   }
 
   public startConnection() {
@@ -72,5 +78,9 @@ export class ConnectionService {
 
   public getConnectionId(): string {
     return this._clientEmail;
+  }
+
+  public setFeedback(feedback) {
+    return this._connection.invoke('SetMessage', feedback);
   }
 }
