@@ -24,6 +24,7 @@ export class ConnectionService {
       this._conversationSubject.next(this._conversation);
     });
     this._connection.on('GetFeedback', data => {
+      console.error('Received feedback message.');
       var feedbackMessage: Message = new Message();
       feedbackMessage.emailId = "feedbackBot";
       this._conversation.push(feedbackMessage);
@@ -81,6 +82,6 @@ export class ConnectionService {
   }
 
   public setFeedback(feedback) {
-    return this._connection.invoke('SetMessage', feedback);
+    return this._connection.invoke('SetFeedback', feedback);
   }
 }
