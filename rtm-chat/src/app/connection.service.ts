@@ -38,7 +38,9 @@ export class ConnectionService {
 
   public config(query: String) {
     this._connection.invoke('AssignMeToUser', query).then(result => {
+      console.log("Called get conversation");
       this._connection.invoke('GetConversation', query).then(result => {
+        console.log("Get conversation result: " + JSON.stringify(result));
         this._conversationSubject.next(result);
       });
       console.log("Config Result: " + result);
