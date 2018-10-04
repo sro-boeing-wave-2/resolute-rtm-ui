@@ -41,7 +41,8 @@ export class ConnectionService {
       console.log("Called get conversation");
       this._connection.invoke('GetConversation', query).then(result => {
         console.log("Get conversation result: " + JSON.stringify(result));
-        this._conversationSubject.next(result);
+        this._conversation = result;
+        this._conversationSubject.next(this._conversation);
       });
       console.log("Config Result: " + result);
     });

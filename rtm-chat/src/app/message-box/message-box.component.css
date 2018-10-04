@@ -1,6 +1,6 @@
 .message-box-container {
   display: flex;
-  position: fixed;
+  position: absolute;
   background: #f5f5f6;
   left: 0;
   bottom: 0;
