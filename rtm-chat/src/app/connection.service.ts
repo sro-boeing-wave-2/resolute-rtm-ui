@@ -39,12 +39,16 @@ export class ConnectionService {
   public config(query: String) {
     this._connection.invoke('AssignMeToUser', query).then(result => {
       console.log("Called get conversation");
-      this._connection.invoke('GetConversation', query).then(result => {
-        console.log("Get conversation result: " + JSON.stringify(result));
-        this._conversation = result;
-        this._conversationSubject.next(this._conversation);
-      });
+      this.GetPreviousConversation(query);
       console.log("Config Result: " + result);
+    });
+  }
+
+  public GetPreviousConversation(threadId: String) {
+    this._connection.invoke('GetConversation', threadId).then(result => {
+      console.log("Get conversation result: " + JSON.stringify(result));
+      this._conversation = result;
+      this._conversationSubject.next(this._conversation);
     });
   }
 
@@ -67,7 +71,7 @@ export class ConnectionService {
   }
 
   public connectToAgent(email: String, query: String) {
-    this._connection.invoke('AllocateMeAnAgent', email, query);
+    return this._connection.invoke('AllocateMeAnAgent', email, query);
   }
 
   public sendMessage(message: Message) {

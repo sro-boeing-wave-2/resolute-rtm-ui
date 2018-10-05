@@ -22,8 +22,11 @@ export class InfoFormComponent implements OnInit {
     this.connectionService.setUserDetails(this.email);
     this.connectionService.startConnection().then(_ => {
       console.log("Connection Established");
-      this.connectionService.connectToAgent(this.email, this.query);
+      this.connectionService.connectToAgent(this.email, this.query).then(result => {
+        if (this.query.charAt(0) == '#') {
+          this.connectionService.GetPreviousConversation(this.query);
+        }
+      });
     });
   }
-
 }
