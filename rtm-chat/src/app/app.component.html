@@ -1,9 +1,11 @@
 <div class="chat-window">
   <div class="message-thread">
     <app-info-form *ngIf="type != null && type == 'user'"></app-info-form>
-    <div class="message" *ngFor="let message of _conversation">
-      <app-message-text [message]="message" [_connectionId]="email" *ngIf="message.emailId != 'feedbackBot' && message.emailId != 'feedbackAgent'"></app-message-text>
-      <app-feedback *ngIf="message.emailId == 'feedbackBot' || message.emailId == 'feedbackAgent'" (type)="message.mailId == 'feedbackBot' ? 'Bot' : 'Agent'"></app-feedback>
+    <div ngx-auto-scroll lock-y-offset="10" observe-attributes>
+      <div class="message" *ngFor="let message of _conversation">
+        <app-message-text [message]="message" [_connectionId]="email" *ngIf="message.emailId != 'feedbackBot' && message.emailId != 'feedbackAgent'"></app-message-text>
+        <app-feedback *ngIf="message.emailId == 'feedbackBot' || message.emailId == 'feedbackAgent'" (type)="message.mailId == 'feedbackBot' ? 'Bot' : 'Agent'"></app-feedback>
+      </div>
     </div>
   </div>
   <app-message-box class="message-box"></app-message-box>

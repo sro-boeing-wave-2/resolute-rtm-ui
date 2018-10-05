@@ -2,6 +2,8 @@ import { Message } from './message';
 import { ConnectionService } from './connection.service';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit, Output, Input } from '@angular/core';
+import { NgxAutoScroll } from "ngx-auto-scroll";
+import { ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -9,6 +11,9 @@ import { Component, OnInit, Output, Input } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+
+  @ViewChild(NgxAutoScroll) ngxAutoScroll: NgxAutoScroll;
+
   title = 'rtm-chat';
   public _conversation = [];
   public _connectionId = "";
@@ -51,5 +56,9 @@ export class AppComponent implements OnInit {
 
     this._connectionService.config(this._connectionId);
     console.log("ConnectionId: " + this._connectionId); // Print the parameter to the console.
+  }
+
+  public forceScrollDown(): void {
+    this.ngxAutoScroll.forceScrollDown();
   }
 }
