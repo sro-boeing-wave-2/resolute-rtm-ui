@@ -15,14 +15,10 @@
 }
 
 .mat-card-actions{
-  padding: 5px;
-  text-align: center !important;
 }
 
 button {
-  display: block;
   margin: 20px;
-  width: 25%;
   color: #0077B5;
   background-color: #ffffff;
   outline: none;
