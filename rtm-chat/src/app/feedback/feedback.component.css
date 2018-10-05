@@ -10,6 +10,7 @@
   width: -webkit-fill-available;
   border-radius: 10px;
   float: right;
+  text-align: center;
   padding: 10px !important;
 }
 
@@ -27,6 +28,7 @@ button {
   outline: none;
   border: none;
   float: left;
+  text-align: center;
 }
 
 button:hover{
