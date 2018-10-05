@@ -4,7 +4,7 @@
     <div ngx-auto-scroll lock-y-offset="10" observe-attributes>
       <div class="message" *ngFor="let message of _conversation">
         <app-message-text [message]="message" [_connectionId]="email" *ngIf="message.emailId != 'feedbackBot' && message.emailId != 'feedbackAgent'"></app-message-text>
-        <app-feedback *ngIf="message.emailId == 'feedbackBot' || message.emailId == 'feedbackAgent'" (type)="message.mailId == 'feedbackBot' ? 'Bot' : 'Agent'"></app-feedback>
+        <app-feedback *ngIf="message.emailId == 'feedbackBot' || message.emailId == 'feedbackAgent'" (type)="message.emailId == 'feedbackBot' ? 'Bot' : 'Agent'"></app-feedback>
       </div>
     </div>
   </div>
