@@ -16,19 +16,19 @@
 
 .mat-card-actions{
   padding: 5px;
-  text-align: center;
+  text-align: center !important;
 }
 
 button {
   display: block;
-  margin: 5px;
-  width: 40%;
+  margin: 20px;
+  width: 25%;
   color: #0077B5;
   background-color: #ffffff;
   outline: none;
   border: none;
   float: left;
-  text-align: center;
+  text-align: center !important;
 }
 
 button:hover{
