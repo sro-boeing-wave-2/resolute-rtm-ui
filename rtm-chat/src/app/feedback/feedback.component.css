@@ -7,24 +7,22 @@
   color: #ffffff;
   background-color: #0077B5;
   height: inherit;
-  width: -webkit-fill-available;
+  width: 50%;
   border-radius: 10px;
   float: right;
   text-align: center;
   padding: 10px !important;
 }
 
-.mat-card>.mat-card-actions:last-child {
+/* .mat-card>.mat-card-actions:last-child {
   margin: 0 auto;
-}
+} */
 
 button {
-  margin: 20px;
   color: #0077B5;
   background-color: #ffffff;
   outline: none;
   border: none;
-  float: left;
   text-align: center !important;
 }
 
