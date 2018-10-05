@@ -23,21 +23,24 @@
 .message-send-button {
   outline: none;
   border: none;
-  color: #004d40;
-  text-decoration: none;background-color: transparent;
+  color: #0077B5;
+  text-decoration: none;
+  background-color: transparent;
   cursor: pointer;
 }
 
 textarea::-webkit-input-placeholder {
-  color: #004d40 ;
+  color: #0077B5 ;
   padding: 5px;
-  }
+  font-family: 'Raleway', sans-serif;
+  font-weight: bold;
+}
 
 .chat-footer-text {
   display: flex;
   font-family: 'Raleway', sans-serif;
   width: 100%;
   clear: both;
-  border: 1px solid #004d40;
+  border: 1px solid #0077B5;
 }
 

@@ -1,42 +1,55 @@
 .message-box-send {
   display: flex;
-  background: #000a12;
-  width: 60%;
+  background: #76448A;
+  width: 50%;
+  height: 50%;
+  overflow: hidden;
   float: left;
   border-radius: 10px;
-  margin: 1%;
+  margin: 5px;
+  padding: 0px;
+}
+
+.user-avatar-div-send {
+  width: 20%;
+  text-align: center;
+  padding: 10px 5px 10px 30px;
+  height: 50%;
+
+}
+
+
+.user-avatar-div-recieve {
+  width: 20%;
+  text-align: center;
+  padding: 10px 5px 10px 30px;
+
 }
 
 .message-box-recieve {
-  display: flex;
-  background: #4f5b62;
-  width: 60%;
+  background: #117864;
+  width: 50%;
+  height: 50%;
   float: right;
   border-radius: 10px;
   text-align: left;
-  margin: 1%;
+  margin: 5px;
+  overflow: hidden;
 }
 
 .user-name {
   font-family: 'Raleway', sans-serif;
   color: #f5f5f6;
   font-weight: bold;
+  font-size: x-large;
 }
 
-.user-avatar-div-send {
-  float: left;
-  width: 20%;
-  height: 100%;
-}
-
-.user-avatar-div-recieve {
-  float: right;
-  width: 40%;
-  height: 100%;
-}
 
 .message {
   font-family: 'Montserrat', sans-serif;
   font-style: italic;
   color: #f5f5f6;
+  overflow: hidden;
 }
+
+
