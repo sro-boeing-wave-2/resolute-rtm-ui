@@ -1,6 +1,6 @@
 .message-box-send {
   background: #76448A;
-  width: 50%;
+  width: 54%;
   height: 50%;
   float: right;
   border-radius: 10px;
@@ -11,7 +11,7 @@
 }
 
 
-.user-avatar-div-send {
+/* .user-avatar-div-send {
   width: 20%;
   text-align: center;
   padding: 10px 5px 10px 30px;
@@ -24,7 +24,7 @@
   text-align: center;
   padding: 10px 5px 10px 30px;
 
-}
+} */
 
 .message-box-recieve {
   background: #117864;
