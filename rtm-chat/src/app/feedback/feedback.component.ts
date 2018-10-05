@@ -22,8 +22,10 @@ export class FeedbackComponent implements OnInit {
 
   public submitNegativeFeedback() {
     if (this.type === 'Bot') {
+      console.log('1');
       this._connectionService.setFeedback(1);
     } else {
+      console.log('-1');
       this._connectionService.setFeedback(-1);
     }
   }
