@@ -16,11 +16,18 @@ export class ConnectionService {
 
   constructor() {
     this._connection = new HubConnectionBuilder()
-      .withUrl("http://172.23.238.239:5000/ChatHub")
+      .withUrl("http://13.126.8.255/rtm/ChatHub")
       .build();
     this._connection.on('message', data => {
       console.log("Received message: " + data);
       this._conversation.push(data as Message);
+      this._conversationSubject.next(this._conversation);
+    });
+    this._connection.on('GetFeedback', data => {
+      console.error('Received feedback message.');
+      var feedbackMessage: Message = new Message();
+      feedbackMessage.emailId = "feedbackBot";
+      this._conversation.push(feedbackMessage);
       this._conversationSubject.next(this._conversation);
     });
   }
@@ -31,6 +38,12 @@ export class ConnectionService {
 
   public config(query: String) {
     this._connection.invoke('AssignMeToUser', query).then(result => {
+      console.log("Called get conversation");
+      this._connection.invoke('GetConversation', query).then(result => {
+        console.log("Get conversation result: " + JSON.stringify(result));
+        this._conversation = result;
+        this._conversationSubject.next(this._conversation);
+      });
       console.log("Config Result: " + result);
     });
   }
@@ -69,5 +82,9 @@ export class ConnectionService {
 
   public getConnectionId(): string {
     return this._clientEmail;
+  }
+
+  public setFeedback(feedback) {
+    return this._connection.invoke('SetFeedback', feedback);
   }
 }

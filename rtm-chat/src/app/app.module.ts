@@ -11,13 +11,15 @@ import { MessageBoxComponent } from './message-box/message-box.component';
 import { InfoFormComponent } from './info-form/info-form.component';
 import { MessageTextComponent } from './message-text/message-text.component';
 import { RouterModule } from '@angular/router';
+import { FeedbackComponent } from './feedback/feedback.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MessageBoxComponent,
     InfoFormComponent,
-    MessageTextComponent
+    MessageTextComponent,
+    FeedbackComponent
   ],
   imports: [
     BrowserModule,
