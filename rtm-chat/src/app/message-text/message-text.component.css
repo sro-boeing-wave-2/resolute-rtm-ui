@@ -1,21 +1,20 @@
 .message-box-send {
-  display: flex;
   background: #76448A;
   width: 50%;
   height: 50%;
-  overflow: hidden;
-  float: left;
+  float: right;
   border-radius: 10px;
+  text-align: left;
   margin: 5px;
-  padding: 0px;
+  overflow: hidden;
 }
+
 
 .user-avatar-div-send {
   width: 20%;
   text-align: center;
   padding: 10px 5px 10px 30px;
   height: 50%;
-
 }
 
 
