@@ -13,6 +13,7 @@ export class FeedbackComponent implements OnInit {
   constructor(private _connectionService: ConnectionService) { }
 
   ngOnInit() {
+    console.log("Type of feedback request: " + this.type);
   }
 
   public submitPositiveFeedback() {
