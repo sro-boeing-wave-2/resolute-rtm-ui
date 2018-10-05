@@ -1,5 +1,5 @@
 <div class="message-box-send" *ngIf="_connectionId == message.emailId">
-  <div style=" width: 90%">
+  <div>
     <mat-card-title class="user-name">{{message.name}}</mat-card-title>
     <mat-card-content>
       <p class="message">
@@ -9,7 +9,7 @@
   </div>
 </div>
 <mat-card class="message-box-recieve" align="right" *ngIf="_connectionId != message.emailId">
-  <div style="width: 90%">
+  <div>
     <mat-card-title class="user-name">{{message.name}}</mat-card-title>
     <mat-card-content>
       <p class="message">

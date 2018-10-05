@@ -1,8 +1,10 @@
 <div class="chat-window">
-  <app-info-form *ngIf="type != null && type == 'user'"></app-info-form>
-  <div *ngFor="let message of _conversation">
-    <app-message-text [message]="message" [_connectionId]="email" *ngIf="message.emailId != 'feedbackBot'"></app-message-text>
-    <app-feedback *ngIf="message.emailId == 'feedbackBot'"></app-feedback>
+  <div class="message-thread">
+    <app-info-form *ngIf="type != null && type == 'user'"></app-info-form>
+    <div class="message" *ngFor="let message of _conversation">
+      <app-message-text [message]="message" [_connectionId]="email" *ngIf="message.emailId != 'feedbackBot'"></app-message-text>
+      <app-feedback *ngIf="message.emailId == 'feedbackBot'"></app-feedback>
+    </div>
   </div>
+  <app-message-box class="message-box"></app-message-box>
 </div>
-<app-message-box class="message-box"></app-message-box>
