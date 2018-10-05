@@ -30,6 +30,13 @@ export class ConnectionService {
       this._conversation.push(feedbackMessage);
       this._conversationSubject.next(this._conversation);
     });
+    this._connection.on('GetFeedbackAgent', data => {
+      console.error('Received feedback message.');
+      var feedbackMessage: Message = new Message();
+      feedbackMessage.emailId = "feedbackAgent";
+      this._conversation.push(feedbackMessage);
+      this._conversationSubject.next(this._conversation);
+    });
   }
 
   public startConnection() {

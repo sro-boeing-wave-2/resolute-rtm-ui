@@ -1,5 +1,5 @@
 import { ConnectionService } from '../connection.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-feedback',
@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./feedback.component.css']
 })
 export class FeedbackComponent implements OnInit {
+
+  @Input() type: string;
 
   constructor(private _connectionService: ConnectionService) { }
 
@@ -18,7 +20,11 @@ export class FeedbackComponent implements OnInit {
   }
 
   public submitNegativeFeedback() {
-    this._connectionService.setFeedback(1);
+    if (this.type === 'Bot') {
+      this._connectionService.setFeedback(1);
+    } else {
+      this._connectionService.setFeedback(-1);
+    }
   }
 
 }
