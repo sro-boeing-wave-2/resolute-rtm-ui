@@ -14,7 +14,8 @@
   padding: 10px !important;
 }
 
-.mat-card-actions{
+.mat-card>.mat-card-actions:last-child {
+  margin: 0 auto;
 }
 
 button {
