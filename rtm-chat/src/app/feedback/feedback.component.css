@@ -7,9 +7,10 @@
   color: #ffffff;
   background-color: #0077B5;
   height: inherit;
-  width: 100%;
+  width: -webkit-fill-available;
   border-radius: 10px;
   float: right;
+  padding: 0px !important;
 }
 
 .mat-card-actions{
