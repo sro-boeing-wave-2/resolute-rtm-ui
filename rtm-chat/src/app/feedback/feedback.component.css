@@ -14,7 +14,6 @@
 }
 
 .mat-card-actions{
-  background: #ffffff;
   padding: 5px;
   text-align: center;
 }
@@ -27,6 +26,7 @@ button {
   background-color: #ffffff;
   outline: none;
   border: none;
+  float: left;
 }
 
 button:hover{
