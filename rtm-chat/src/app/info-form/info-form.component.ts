@@ -24,7 +24,8 @@ export class InfoFormComponent implements OnInit {
       console.log("Connection Established");
       this.connectionService.connectToAgent(this.email, this.query).then(result => {
         if (this.query.charAt(0) == '#') {
-          this.connectionService.GetPreviousConversation(this.query);
+          console.log("Getting conversation for " + this.query.substring(1));
+          this.connectionService.GetPreviousConversation(this.query.substring(1));
         }
       });
     });
