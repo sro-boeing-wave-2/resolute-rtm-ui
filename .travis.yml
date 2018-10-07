@@ -5,6 +5,7 @@ notifications:
   slack: srboeingdotnet:pZz5KfrgntyjLpS9a1d2b1rH
 mono: none
 script:
+  - ifconfig     
   - chmod +x ./deploy.sh
 after_success: 
   - /bin/bash ./deploy.sh
